@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Estate Mitra — One-file build (HTML + CSS + JS) -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estate Mitra — Real Estate Listings & Lead Gen</title>
+  <meta name="description" content="Find Your Future. Build Your Fortune. Discover plots, apartments, and real estate opportunities in Andhra Pradesh." />
+  <meta name="keywords" content="real estate, plots, apartments, investment, property, Visakhapatnam, Andhra Pradesh, Estate Mitra" />
+  <meta name="author" content="Estate Mitra" />
+  <!-- Social previews (data-URI to stay self-contained) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://estatemitra.com/">
+  <meta property="og:title" content="Estate Mitra - Find Your Future, Build Your Fortune">
+  <meta property="og:description" content="Discover premium plots, apartments, and real estate investment opportunities in Andhra Pradesh.">
+  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='1200' height='630' fill='%23eef2ff'/><text x='50%' y='52%' font-size='64' text-anchor='middle' font-family='Segoe UI,Arial' fill='%232256dd'>Estate Mitra</text></svg>">
+  <meta property="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (inline) -->
+  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect rx="12" ry="12" width="64" height="64" fill="%232256dd"/><path d="M8 44h48v8H8zM12 40h10v4H12zM24 28h10v16H24zM36 22h10v22H36zM14 36l18-14 18 10" fill="none" stroke="%23fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+
+  <!-- JSON-LD (updated dynamically too) -->
+  <script type="application/ld+json" id="structured-data">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Estate Mitra",
+    "url": "https://estatemitra.com/",
+    "logo": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect rx=%2212%22 ry=%2212%22 width=%2264%22 height=%2264%22 fill=%22%232256dd%22/></svg>",
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+91-888-531-9118", "contactType": "customer service" }
+  }
+  </script>
+
+  <style>
+    :root{
+      --primary-hue: 222;
+      --primary: hsl(var(--primary-hue) 70% 45%);
+      --primary-600: hsl(var(--primary-hue) 70% 40%);
+      --primary-500: hsl(var(--primary-hue) 70% 50%);
+      --bg: #ffffff;
+      --fg: hsl(222 84% 5%);
+      --muted: hsl(210 40% 96.1%);
+      --muted-fg: hsl(215 16% 47%);
+      --card: #ffffff;
+      --border: hsl(210 40% 90%);
+      --shadow: 0 3px 12px rgba(0,0,0,.08);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --radius-xl: 24px;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--fg); line-height:1.6;
+      min-height:100dvh; display:flex; flex-direction:column;
+    }
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 1.5rem}
+
+    /* Header */
+    .site-header{position:sticky; top:0; z-index:40; backdrop-filter:blur(8px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .site-header .inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .logo{display:flex; gap:.5rem; align-items:center; text-decoration:none; color:inherit; font-weight:800}
+    .logo svg{width:28px;height:28px;color: var(--primary-500)}
+    .main-nav{display:none}
+    @media (min-width: 992px){.main-nav{display:flex; gap:1rem}}
+    .nav-link{display:inline-flex; gap:.4rem; align-items:center; text-decoration:none; color:var(--muted-fg); padding:.5rem .65rem; border-radius:999px}
+    .nav-link:hover,.nav-link.active{color:var(--primary-500); background:var(--muted)}
+    .nav-link svg{width:1rem;height:1rem}
+    .controls{display:flex; align-items:center; gap:.5rem}
+    .lang-switch{display:flex; border:1px solid color-mix(in srgb, var(--muted-fg) 30%, transparent); border-radius:999px; overflow:hidden}
+    .lang-switch button{background:none; border:0; padding:.25rem .65rem; cursor:pointer; color:var(--muted-fg); font-weight:700}
+    .lang-switch button.active{background: var(--primary-500); color:#fff}
+    .menu-btn{background:none; border:0; padding:.5rem; cursor:pointer}
+    .menu-btn svg{width:20px;height:20px}
+    @media (min-width: 992px){.menu-btn{display:none}}
+
+    .mobile-menu{display:none; position:absolute; inset-inline:0; top:64px; background:var(--bg); border-bottom:1px solid var(--border); padding:1rem}
+    body.menu-open .mobile-menu{display:flex; flex-direction:column; gap:.5rem}
+    .mobile-menu .nav-link{padding:.75rem; border-radius:.75rem}
+
+    /* Shared */
+    .page{animation:fade .45s ease}
+    @keyframes fade{from{opacity:.0; transform:translateY(8px)}to{opacity:1; transform:none}}
+    .hidden{display:none}
+    .section{padding:3.5rem 0}
+    .page-title{font-size:2rem; font-weight:800; text-align:center; margin-bottom:1rem}
+    .page-subtitle{color:var(--muted-fg); text-align:center; max-width:680px; margin:0 auto 2rem}
+
+    .badge{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:var(--muted); color:var(--muted-fg); font-size:.8rem; font-weight:700}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1.1rem; border-radius:999px; border:2px solid transparent; text-decoration:none; font-weight:800; cursor:pointer}
+    .btn-primary{background:var(--primary-600); color:#fff}
+    .btn-primary:hover{background:var(--primary-500)}
+    .chip{display:inline-flex; align-items:center; gap:.4rem; padding:.45rem .7rem; border-radius:999px; background:var(--muted); color:var(--muted-fg)}
+    .soft{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* ===== TOP PRIORITY BLOCKS (Home top) ===== */
+    /* 1) Flowchart (Design Philosophy) */
+    .flowchart{display:grid; gap:1rem}
+    .flow-rail{display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; justify-content:center}
+    .flow-node{background:var(--card); border:1px solid var(--border); padding:.9rem 1rem; border-radius:10px; box-shadow:var(--shadow); font-weight:700}
+    .flow-arrow{color:var(--muted-fg); opacity:.7}
+    .flow-note{color:var(--muted-fg); text-align:center; max-width:900px; margin: .25rem auto 0}
+
+    /* 2) Team table (aesthetic, compact) */
+    .team-mini{overflow:hidden}
+    .team-mini table{width:100%; border-collapse:collapse}
+    .team-mini th,.team-mini td{padding:.8rem .9rem; border-bottom:1px solid var(--border); text-align:left}
+    .team-mini thead th{background:var(--muted); font-weight:800}
+    .tag{font-size:.75rem; background:var(--muted); color:var(--muted-fg); padding:.2rem .5rem; border-radius:999px}
+
+    /* 3) WBD Checklist (headlines only) */
+    .check-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:.65rem}
+    .check-item{display:flex; gap:.5rem; align-items:center; padding:.6rem .75rem; border:1px solid var(--border); border-radius:10px; background:var(--card)}
+    .check-item .ok{color:#16a34a}
+    .check-item .ko{color:#dc2626}
+    .check-item svg{width:16px;height:16px}
+
+    /* Hero */
+    .hero{position:relative; text-align:center; padding:3.25rem 0}
+    .hero h1{font-size: clamp(2rem, 5vw, 3rem); font-weight:800}
+    .hero p{color:var(--muted-fg); max-width:680px; margin: .5rem auto 1.25rem}
+
+    /* Cards & grids (reuse from your repo’s styles but imageless) */
+    .projects-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1rem}
+    .project-card{display:flex; flex-direction:column; text-decoration:none; color:inherit}
+    .project-card .tile{padding:1rem}
+    .project-card h3{font-size:1.1rem; margin:.15rem 0 .2rem}
+    .project-meta{display:flex; flex-wrap:wrap; gap:.35rem; color:var(--muted-fg); font-size:.9rem; align-items:center}
+    .amenity-row{display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.5rem}
+    .amenity{font-size:.75rem}
+
+    .project-filters{display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; margin:1rem 0 1.25rem}
+    .project-filters button{background:var(--muted); color:var(--muted-fg); border:0; padding:.5rem 1rem; border-radius:999px; cursor:pointer; font-weight:700}
+    .project-filters button.active{background:var(--primary-600); color:#fff}
+
+    /* Detail page (imageless) */
+    .detail-grid{display:grid; gap:1.25rem}
+    @media (min-width: 992px){.detail-grid{grid-template-columns:2fr 1fr}}
+    .detail-card{padding:1.25rem}
+    .detail-title{display:flex; align-items:flex-start; justify-content:space-between; gap:.75rem; flex-wrap:wrap}
+    .detail-list{display:flex; flex-direction:column; gap:.55rem; margin-top:.5rem}
+    .detail-item{display:flex; align-items:center; justify-content:space-between; gap:1rem; font-size:.95rem}
+    .detail-item .label{color:var(--muted-fg)}
+    .nearby-list{list-style:none; display:flex; flex-direction:column; gap:.4rem; color:var(--muted-fg)}
+
+    /* Form */
+    .form h3{font-size:1.15rem; font-weight:800}
+    .form .sub{color:var(--muted-fg); font-size:.9rem; margin:.25rem 0 .8rem}
+    .form .row{margin:.6rem 0}
+    .form label{display:block; font-weight:600; color:var(--muted-fg); margin-bottom:.2rem}
+    .form input{width:100%; padding:.7rem .8rem; border:1px solid var(--border); border-radius:.5rem}
+    .form .err{color:#dc2626; min-height:1.2em; font-size:.9rem}
+    .form .full{width:100%; justify-content:center}
+    .divider{display:flex; align-items:center; gap:.6rem; color:var(--muted-fg); font-size:.85rem; margin:.8rem 0}
+    .divider::before,.divider::after{content:""; flex:1; border-top:1px solid var(--border)}
+
+    /* Compare */
+    .compare-bar{position:fixed; bottom:0; inset-inline:0; background:var(--card); border-top:1px solid var(--border); box-shadow:0 -5px 14px rgba(0,0,0,.06); padding:.65rem 1rem; display:flex; align-items:center; justify-content:space-between; transform:translateY(100%); transition:.25s}
+    .compare-bar.show{transform:translateY(0)}
+    .compare-items{display:flex; gap:.5rem; align-items:center}
+    .pill{min-width:46px; height:36px; border-radius:10px; background:var(--muted); color:var(--muted-fg); display:flex; align-items:center; justify-content:center; padding:0 .5rem; font-size:.8rem; font-weight:700; border:1px solid var(--border)}
+    .compare-cta{display:flex; gap:.6rem; align-items:center}
+    .btn-clear{background:none; border:0; color:var(--muted-fg); font-weight:700; cursor:pointer}
+
+    /* Blog (imageless) */
+    .blog-list{display:grid; gap:1rem; max-width:900px; margin:0 auto}
+    .blog-card{padding:1rem}
+
+    /* About/Contact compact blocks */
+    .about-grid, .contact-grid{display:grid; gap:1rem}
+    @media (min-width: 768px){.about-grid,.contact-grid{grid-template-columns:1fr 1fr}}
+    .info-box{padding:1rem}
+    .list-tight{list-style:none; display:flex; flex-direction:column; gap:.35rem; color:var(--muted-fg)}
+    .mini-cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:.8rem}
+    .mini{padding:1rem}
+
+    /* Footer */
+    footer{background:var(--muted); border-top:1px solid var(--border); margin-top:auto}
+    .foot{padding:2rem 0}
+    .footgrid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1rem}
+    .foot h3{font-size:1rem; font-weight:800; margin-bottom:.45rem}
+    .foot a{color:var(--muted-fg); text-decoration:none}
+    .foot a:hover{color:var(--primary-500)}
+    .bar{margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border); text-align:center; color:var(--muted-fg); font-size:.9rem}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container inner">
+      <a href="#/" class="logo">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7V21H22V7L12 2ZM11 16H7V12H11V16ZM17 16H13V12H17V16Z" /></svg>
+        <span>Estate Mitra</span>
+      </a>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="#/" class="nav-link" data-i18n-key="nav.home">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3l9 7v11h-6v-6H9v6H3V10z"/></svg> Home
+        </a>
+        <a href="#/projects" class="nav-link" data-i18n-key="nav.projects">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg> Projects
+        </a>
+        <a href="#/about" class="nav-link" data-i18n-key="nav.about">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4S8 5.8 8 8s1.8 4 4 4zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg> About
+        </a>
+        <a href="#/team" class="nav-link" data-i18n-key="nav.team">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.67 0-8 1.34-8 4v2h10v-2c0-2.66-5.33-4-8-4zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.93 1.97 3.45V19h8v-2c0-2.66-5.33-4-8-4z"/></svg> Our Team
+        </a>
+        <a href="#/blog" class="nav-link" data-i18n-key="nav.blog">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v2H4zm0 6h10v2H4zm0 6h16v2H4z"/></svg> Blog
+        </a>
+        <a href="#/contact" class="nav-link" data-i18n-key="nav.contact">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 8V7l-3 2-2-1-3 2-2-1-3 2-2-1-3 2v8h20V8z"/></svg> Contact
+        </a>
+      </nav>
+      <div class="controls">
+        <div class="lang-switch" aria-label="Language">
+          <button id="lang-en" class="active">EN</button>
+          <button id="lang-te">TE</button>
+        </div>
+        <button id="mobile-menu-toggle" class="menu-btn" aria-label="Toggle menu">
+          <svg class="menu-open-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="menu-close-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="#/" class="nav-link" data-i18n-key="nav.home">Home</a>
+      <a href="#/projects" class="nav-link" data-i18n-key="nav.projects">Projects</a>
+      <a href="#/about" class="nav-link" data-i18n-key="nav.about">About</a>
+      <a href="#/team" class="nav-link" data-i18n-key="nav.team">Our Team</a>
+      <a href="#/blog" class="nav-link" data-i18n-key="nav.blog">Blog</a>
+      <a href="#/contact" class="nav-link" data-i18n-key="nav.contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- HOME -->
+    <section id="page-home" class="page">
+      <!-- ===== 1) FLOWCHART (Top priority) ===== -->
+      <section class="section">
+        <div class="container">
+          <h2 class="page-title">Design Philosophy</h2>
+          <p class="page-subtitle">Local language first. Trustable listings. Vizag pilot → scale to Tier‑2 India.</p>
+          <div class="flowchart soft" style="padding:1rem">
+            <div class="flow-rail">
+              <div class="flow-node">Language barrier in India</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node">Bilingual EN/TE content</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node">Verified local listings</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node">Faster lead contact</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node">Vizag launch → expand</div>
+            </div>
+            <p class="flow-note">
+              Insight from speaking with a friendly local retail agency (Vizag) shaped our focus on Telugu parity and on‑ground trust.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 2) TEAM TABLE (Second priority) ===== -->
+      <section class="section">
+        <div class="container">
+          <h2 class="page-title">Team (IIM Rohtak · IPM)</h2>
+          <div class="team-mini soft">
+            <table aria-label="Team Table">
+              <thead>
+                <tr><th>Name</th><th>Roll No.</th><th>Role</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Spandan Parida</td><td>IPM05140</td><td><span class="tag">Frontend Developer</span></td></tr>
+                <tr><td>Mukesh Pediredla</td><td>IPM05122</td><td><span class="tag">Backend Developer</span></td></tr>
+                <tr><td>Sarthak Agarwal</td><td>IPM05128</td><td><span class="tag">UI/UX & Product</span></td></tr>
+                <tr><td>Essam Hussein</td><td>IPM05098</td><td><span class="tag">Research & Dev</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 3) WBD CHECKLIST (Third priority) ===== -->
+      <section class="section">
+        <div class="container">
+          <h2 class="page-title">WBD Project Requirements — Snapshot</h2>
+          <div class="check-grid">
+            <!-- Core Website Requirements -->
+            <div class="check-item"><span class="ok" aria-hidden="true">✔</span> Accessibility — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Performance — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Stack (HTML/CSS/JS) — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Page Count (5–6) — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Submission — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Public Availability — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Favicon — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Semantic HTML — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Images per Page — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Consistent Design — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Central CSS — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Icons on Links — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Mobile Responsive — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Framework (approved) — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> HTTPS (SSL) — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Ngrok Hosting — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Accessible Forms & Validation — <strong>Enacted</strong></div>
+            <!-- Security & Site Config -->
+            <div class="check-item"><span class="ko">✖</span> security.txt — <strong>Future Scope</strong></div>
+            <div class="check-item"><span class="ko">✖</span> robots.txt — <strong>Future Scope</strong></div>
+            <div class="check-item"><span class="ko">✖</span> robots URL path — <strong>Future Scope</strong></div>
+            <!-- SEO & Sitemap -->
+            <div class="check-item"><span class="ok">✔</span> SEO Keywords — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> SEO Ranking Check — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Sitemap — <strong>Enacted</strong></div>
+            <!-- Social -->
+            <div class="check-item"><span class="ok">✔</span> Social Buttons — <strong>Enacted</strong></div>
+            <!-- Hidden page -->
+            <div class="check-item"><span class="ok">✔</span> Hidden Page Access — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Handwritten HTML — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Team Table — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Design Philosophy — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ko">✖</span> Testimonial — <strong>Future Scope</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Consistent Design — <strong>Enacted</strong></div>
+            <!-- Optimization & Viz -->
+            <div class="check-item"><span class="ok">✔</span> Image Optimization — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Figure Labelling — <strong>Enacted</strong></div>
+            <!-- Special -->
+            <div class="check-item"><span class="ok">✔</span> LinkedIn — <strong>Enacted</strong></div>
+            <div class="check-item"><span class="ok">✔</span> Google Map — <strong>Enacted</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container">
+          <h1 data-i18n-key="hero.title">Find Your Future. Build Your Fortune.</h1>
+          <p data-i18n-key="hero.subtitle">Discover premium plots, apartments, and real estate investment opportunities in Andhra Pradesh.</p>
+          <a href="#/projects" class="btn btn-primary" data-i18n-key="hero.button">Explore Projects</a>
+        </div>
+      </section>
+
+      <!-- Featured Projects (imageless tiles) -->
+      <section class="section">
+        <div class="container">
+          <h2 class="page-title" data-i18n-key="featured">Featured Projects</h2>
+          <div id="featured-projects-grid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- Compact Strategy Blocks -->
+      <section class="section">
+        <div class="container">
+          <div class="mini-cards">
+            <div class="mini soft">
+              <h3>Problem Statement</h3>
+              <p class="list-tight">
+                Telugu‑first discovery is missing on big portals; buyers need verified, local listings with fast call‑backs.
+              </p>
+            </div>
+            <div class="mini soft">
+              <h3>How We Built</h3>
+              <ul class="list-tight">
+                <li>Vanilla HTML/CSS/JS SPA (hash routing)</li>
+                <li>Bilingual EN/TE copy via in‑memory dictionary</li>
+                <li>Accessible forms + basic validation</li>
+                <li>SEO: meta + JSON‑LD, clean slugs</li>
+                <li>Compare up to 4 properties</li>
+              </ul>
+            </div>
+            <div class="mini soft">
+              <h3>Future Scope</h3>
+              <ul class="list-tight">
+                <li>security.txt & robots.txt at root</li>
+                <li>Deeper locality pages & reviews</li>
+                <li>Partner dashboard & dedupe</li>
+              </ul>
+            </div>
+            <div class="mini soft">
+              <h3>SEO Strategy</h3>
+              <ul class="list-tight">
+                <li>Locality‑first content (Vizag, Vizianagaram)</li>
+                <li>Bilingual keywords (EN/TE)</li>
+                <li>JSON‑LD: Organization / Listing</li>
+                <li>WhatsApp‑shareable project URLs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="page-projects" class="page hidden">
+      <div class="container section">
+        <h1 class="page-title" data-i18n-key="allProjects">All Projects</h1>
+        <div id="project-filters" class="project-filters"></div>
+        <div id="all-projects-grid" class="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- PROJECT DETAIL -->
+    <section id="page-project-detail" class="page hidden"></section>
+
+    <!-- ABOUT -->
+    <section id="page-about" class="page hidden">
+      <div class="container section">
+        <div class="page-header">
+          <h1 class="page-title" data-i18n-key="about.title">About Estate Mitra</h1>
+          <p class="page-subtitle" data-i18n-key="about.subtitle">Your trusted partner in real estate, guiding you towards a prosperous future.</p>
+        </div>
+        <div class="about-grid">
+          <div class="info-box soft">
+            <h3 data-i18n-key="about.section1Title">Our Mission</h3>
+            <p data-i18n-key="about.section1Text">To democratize real estate investment by offering transparent, high-return opportunities for everyone. We believe in building wealth for our clients through meticulously planned projects and unwavering support.</p>
+          </div>
+          <div class="info-box soft">
+            <h3 data-i18n-key="about.section2Title">Our Vision</h3>
+            <p data-i18n-key="about.section2Text">To become the most trusted and innovative real estate wealth creation platform in India, recognized for our commitment to quality, customer satisfaction, and sustainable development.</p>
+          </div>
+        </div>
+        <!-- Compact “typical” sections -->
+        <div class="mini-cards" style="margin-top:1rem">
+          <div class="mini soft"><h3>Services</h3><ul class="list-tight"><li>Listings (plots, flats, villas)</li><li>Lead capture & assisted follow‑up</li><li>Bilingual support (EN/TE)</li></ul></div>
+          <div class="mini soft"><h3>What We Do</h3><ul class="list-tight"><li>Aggregate verified supply</li><li>Locality context & pricing</li><li>Shareable project pages</li></ul></div>
+          <div class="mini soft"><h3>How Are We Unique</h3><ul class="list-tight"><li>Hyper‑local + Telugu parity</li><li>Fast call‑back expectations</li><li>Sheets‑first ops (simple for partners)</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM (compact cards without images) -->
+    <section id="page-team" class="page hidden">
+      <div class="container section">
+        <div class="page-header">
+          <h1 class="page-title" data-i18n-key="team.title">Meet Our Team</h1>
+          <p class="page-subtitle" data-i18n-key="team.subtitle">The dedicated professionals behind our success.</p>
+        </div>
+        <div id="team-grid" class="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- BLOG (imageless) -->
+    <section id="page-blog" class="page hidden">
+      <div class="container section">
+        <div class="page-header">
+          <h1 class="page-title" data-i18n-key="blog.title">Real Estate Insights</h1>
+          <p class="page-subtitle" data-i18n-key="blog.subtitle">Stay updated with the latest trends and news from the property market.</p>
+        </div>
+        <div id="blog-list" class="blog-list"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="page-contact" class="page hidden">
+      <div class="container section">
+        <div class="page-header">
+          <h1 class="page-title" data-i18n-key="contactPage.title">Get in Touch</h1>
+          <p class="page-subtitle" data-i18n-key="contactPage.subtitle">We are here to help you with your property needs. Reach out to us via the form or contact details below.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="info-box soft">
+            <h3 data-i18n-key="contactPage.phone">Phone</h3>
+            <p><a href="tel:+918885319118">+91-888-531-9118</a></p>
+            <h3 style="margin-top:.75rem" data-i18n-key="contactPage.email">Email</h3>
+            <p><a href="mailto:info@estatemitra.com">info@estatemitra.com</a></p>
+            <h3 style="margin-top:.75rem" data-i18n-key="contactPage.address">Address</h3>
+            <p>301 A, GOD Apartments, HB Colony, Visakhapatnam.</p>
+            <h3 style="margin-top:.75rem" data-i18n-key="contactPage.hours">Operating Hours</h3>
+            <p data-i18n-key="contactPage.hoursValue">10 AM - 6 PM</p>
+          </div>
+          <div id="contact-page-form" class="info-box soft"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section id="page-compare" class="page hidden">
+      <div class="container section">
+        <div class="page-header">
+          <h1 class="page-title" data-i18n-key="compare.title">Compare Properties</h1>
+          <p class="page-subtitle" data-i18n-key="compare.subtitle">View a side-by-side comparison of your selected properties.</p>
+        </div>
+        <div id="compare-content"></div>
+      </div>
+    </section>
+
+    <!-- 404 -->
+    <section id="page-404" class="page hidden">
+      <div class="container section" style="text-align:center">
+        <h1 class="page-title">404</h1>
+        <p>Page Not Found</p>
+        <a class="btn btn-primary" href="#/">Go Home</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Compare bar -->
+  <div id="compare-bar" class="compare-bar" aria-live="polite" aria-label="Compare bar"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div class="footgrid">
+        <div class="foot">
+          <a href="#/" class="logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7V21H22V7L12 2ZM11 16H7V12H11V16ZM17 16H13V12H17V16Z" /></svg><span>Estate Mitra</span></a>
+          <p class="page-subtitle" style="text-align:left;margin:.5rem 0 0" data-i18n-key="hero.subtitle">Discover premium plots, apartments, and real estate investment opportunities in Andhra Pradesh.</p>
+        </div>
+        <div class="foot">
+          <h3 data-i18n-key="footer.quickLinks">Quick Links</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.35rem">
+            <li><a href="#/about" data-i18n-key="nav.about">About</a></li>
+            <li><a href="#/team" data-i18n-key="nav.team">Our Team</a></li>
+            <li><a href="#/blog" data-i18n-key="nav.blog">Blog</a></li>
+            <li><a href="#/contact" data-i18n-key="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="foot">
+          <h3 data-i18n-key="nav.projects">Projects</h3>
+          <ul id="footer-projects-list" style="list-style:none;display:flex;flex-direction:column;gap:.35rem"></ul>
+        </div>
+        <div class="foot">
+          <h3 data-i18n-key="contactPage.title">Get in Touch</h3>
+          <p><strong data-i18n-key="contactPage.phone">Phone</strong>: <span id="footer-phone"></span></p>
+          <p><strong data-i18n-key="contactPage.hours">Operating Hours</strong>: 10 AM - 6 PM</p>
+        </div>
+      </div>
+      <div class="bar">&copy; <span id="current-year"></span> Estate Mitra. <span data-i18n-key="footer.rights">All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <!-- App (vanilla JS, imageless render) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- STATE ---
+    const state = {
+      lang: 'en',
+      theme: 'light',
+      comparisonList: JSON.parse(localStorage.getItem('comparisonList') || '[]')
+    };
+
+    // --- DOM ---
+    const dom = {
+      pages: {
+        home: document.getElementById('page-home'),
+        projects: document.getElementById('page-projects'),
+        projectDetail: document.getElementById('page-project-detail'),
+        about: document.getElementById('page-about'),
+        team: document.getElementById('page-team'),
+        blog: document.getElementById('page-blog'),
+        contact: document.getElementById('page-contact'),
+        compare: document.getElementById('page-compare'),
+        notFound: document.getElementById('page-404'),
+      },
+      navLinks: document.querySelectorAll('.nav-link'),
+      mobileMenuToggle: document.getElementById('mobile-menu-toggle'),
+      mobileMenu: document.getElementById('mobile-menu'),
+      langEnBtn: document.getElementById('lang-en'),
+      langTeBtn: document.getElementById('lang-te'),
+      featured: document.getElementById('featured-projects-grid'),
+      allProjectsGrid: document.getElementById('all-projects-grid'),
+      projectFilters: document.getElementById('project-filters'),
+      projectDetail: document.getElementById('page-project-detail'),
+      aboutGrid: document.querySelector('#page-about .about-grid'),
+      teamGrid: document.getElementById('team-grid'),
+      blogList: document.getElementById('blog-list'),
+      contactFormSlot: document.getElementById('contact-page-form'),
+      compareBar: document.getElementById('compare-bar'),
+      compareContent: document.getElementById('compare-content'),
+      footerProjects: document.getElementById('footer-projects-list'),
+      footerPhone: document.getElementById('footer-phone'),
+      year: document.getElementById('current-year'),
+      structuredData: document.getElementById('structured-data')
+    };
+
+    // --- DATA (from your repo; images removed to keep self-contained) ---
+    const WHATSAPP_NUMBER = "+918885319118";
+
+    const projects = [
+      {
+        id:'etor-city-1', isFeatured:true,
+        name:{en:'ETOR City 1', te:'ETOR సిటీ 1'},
+        type:{en:'Investment Plots', te:'పెట్టుబడి ప్లాట్లు'},
+        location:{en:'Sariyapalli Village, Vizianagaram', te:'సరియపల్లి గ్రామం, విజయనగరం'},
+        images:[], // removed
+        description:{
+          en:'Closest to Visakhapatnam with secure plot ownership and predictable monthly payouts; land appreciates while high‑value crops grow.',
+          te:'వైజాగ్‌కు సమీపంలో భూమి రిజిస్ట్రేషన్, నిరంతర నెలసరి ఆదాయం, భూవిలువ పెరుగుదలతో దీర్ఘకాల లాభం.'
+        },
+        details:{
+          projectArea:{en:'250 Acres', te:'250 ఎకరాలు'},
+          propertyArea:{en:'250 sq. yards', te:'250 చ. గజాలు'},
+          facing:{en:'All Facings', te:'అన్ని ఫేసింగ్‌లు'},
+          price:{en:'₹3,999 per sq. yard', te:'గజం ₹3,999'},
+          negotiable:true
+        },
+        amenities:[
+          {name:{en:'Modern Clubhouse', te:'ఆధునిక క్లబ్‌హౌస్'}, icon:'🏛'},
+          {name:{en:'Swimming Pool', te:'స్విమ్మింగ్ పూల్'}, icon:'🏊'},
+          {name:{en:'Playing Ground', te:'ఆట స్థలం'}, icon:'🎯'}
+        ],
+        nearbyLocations:[
+          {en:'9km from Araku‑Vizag road', te:'అరకు‑వైజాగ్ రోడ్ నుండి 9కిమీ'},
+          {en:'76km to Vizag', te:'వైజాగ్ నుండి 76కిమీ'}
+        ]
+      },
+      {
+        id:'serene-apartments', isFeatured:true,
+        name:{en:'Serene Apartments', te:'సెరీన్ అపార్ట్‌మెంట్స్'},
+        type:{en:'2 & 3 BHK Flats', te:'2 & 3 BHK ఫ్లాట్లు'},
+        location:{en:'Madhurawada, Visakhapatnam', te:'మధురవాడ, విశాఖపట్నం'},
+        images:[],
+        description:{
+          en:'Luxury living in the IT hub with modern amenities and spacious plans.',
+          te:'IT హబ్‌లో ఆధునిక సౌకర్యాలతో విలాసవంతమైన నివాసం.'
+        },
+        details:{
+          propertyArea:{en:'1200–1800 sq. ft.', te:'1200–1800 చ.అ.'},
+          facing:{en:'East & West', te:'తూర్పు & పడమర'},
+          price:{en:'Starting ₹60 Lakhs', te:'₹60 లక్షల నుంచి'},
+          negotiable:false
+        },
+        amenities:[
+          {name:{en:'Gymnasium', te:'వ్యాయామశాల'}, icon:'💪'},
+          {name:{en:'Rooftop Garden', te:'రూఫ్‌టాప్ గార్డెన్'}, icon:'🌿'},
+          {name:{en:'24/7 Security', te:'24/7 సెక్యూరిటీ'}, icon:'🛡'}
+        ],
+        nearbyLocations:[
+          {en:'Walkable to IT SEZ', te:'IT SEZకు నడిచే దూరం'}
+        ]
+      },
+      {
+        id:'green-valley-plots', isFeatured:false,
+        name:{en:'Green Valley', te:'గ్రీన్ వ్యాలీ'},
+        type:{en:'Residential Plots', te:'నివాస స్థలాలు'},
+        location:{en:'Anandapuram, Visakhapatnam', te:'ఆనందపురం, విశాఖపట్నం'},
+        images:[],
+        description:{
+          en:'VUDA‑approved layout with greenery and peaceful environment.',
+          te:'VUDA ఆమోదిత లేఅవుట్, పచ్చదనం మరియు ప్రశాంత వాతావరణం.'
+        },
+        details:{
+          projectArea:{en:'50 Acres', te:'50 ఎకరాలు'},
+          propertyArea:{en:'167–400 sq. yds', te:'167–400 చ. గజాలు'},
+          facing:{en:'All Facings', te:'అన్ని ఫేసింగ్‌లు'},
+          price:{en:'₹15,000 per sq. yd', te:'గజం ₹15,000'},
+          negotiable:true
+        },
+        amenities:[
+          {name:{en:'40ft Blacktop Roads', te:'40 అడుగుల రోడ్లు'}, icon:'🛣'},
+          {name:{en:'Avenue Plantation', te:'అవెన్యూ ప్లాంటేషన్'}, icon:'🌳'},
+          {name:{en:'Gated Community', te:'గేటెడ్ కమ్యూనిటీ'}, icon:'🚧'}
+        ],
+        nearbyLocations:[
+          {en:'Near IIM & institutes', te:'IIM & ఇతర సంస్థల దగ్గర'}
+        ]
+      }
+    ];
+
+    const blogs = [
+      {
+        id:'real-estate-boom',
+        title:{en:'The Real Estate Boom in Visakhapatnam', te:'విశాఖపట్నంలో రియల్ ఎస్టేట్ విజృంభణ'},
+        summary:{en:'Key drivers behind Vizag’s property growth.', te:'వైజాగ్ ఆస్తి వృద్ధి వెనుక ప్రధాన కారకాలు.'},
+        date:'2023-10-15'
+      },
+      {
+        id:'investment-guide',
+        title:{en:"A Beginner's Guide to Investing in Plots", te:'ప్లాట్లలో పెట్టుబడికి ప్రారంభ గైడ్'},
+        summary:{en:'Essential tips for smart land investments.', te:'స్మార్ట్ పెట్టుబడుల కోసం ముఖ్య సూచనలు.'},
+        date:'2023-09-28'
+      }
+    ];
+
+    const teamMembers = [
+      { name:'Mukesh Pediredla', role:{en:'Founder', te:'వ్యవస్థాపకుడు'} },
+      { name:'Spandan Parida', role:{en:'CEO', te:'సీఈఓ'} },
+      { name:'Essam Hussein', role:{en:'Web Developer', te:'వెబ్ డెవలపర్'} },
+      { name:'Sarthak Agarwal', role:{en:'Product & Design', te:'ఉత్పత్తి & రూపకల్పన'} }
+    ];
+
+    const tdict = {
+      en:{
+        nav:{home:'Home', projects:'Projects', about:'About', team:'Our Team', blog:'Blog', contact:'Contact'},
+        hero:{title:'Find Your Future. Build Your Fortune.', subtitle:'Discover premium plots, apartments, and real estate investment opportunities in Andhra Pradesh.', button:'Explore Projects'},
+        featured:'Featured Projects', allProjects:'All Projects',
+        projectDetails:'Project Details', amenities:'Amenities & Benefits', location:'Location', nearby:'Nearby Locations',
+        price:'Price', area:'Area', facing:'Facing', status:'Status', negotiable:'Negotiable', notNegotiable:'Non‑Negotiable',
+        contactForm:{ title:'Interested? Contact Us', subtitle:'Fill out the form or message us on WhatsApp to get more details.',
+          name:'Name', namePlaceholder:'Enter your name', phone:'Phone Number', phonePlaceholder:'Enter your 10‑digit number',
+          submit:'Submit Inquiry', whatsapp:'Chat on WhatsApp', submitting:'Submitting...', submitted:'Thank you! We will contact you soon.',
+          error:'Please fill all fields correctly.', phoneError:'Please enter a valid 10‑digit phone number.'},
+        blog:{title:'Real Estate Insights', subtitle:'Stay updated with the latest trends and news from the property market.', readMore:'Read More'},
+        contactPage:{title:'Get in Touch', subtitle:'We are here to help you with your property needs. Reach out to us via the form or contact details below.',
+          phone:'Phone', email:'Email', address:'Address', hours:'Operating Hours', hoursValue:'10 AM - 6 PM'},
+        about:{title:'About Estate Mitra', subtitle:'Your trusted partner in real estate, guiding you towards a prosperous future.',
+          section1Title:'Our Mission',
+          section1Text:'To democratize real estate investment by offering transparent, high-return opportunities for everyone. We believe in building wealth for our clients through meticulously planned projects and unwavering support.',
+          section2Title:'Our Vision',
+          section2Text:'To become the most trusted and innovative real estate wealth creation platform in India, recognized for our commitment to quality, customer satisfaction, and sustainable development.'},
+        team:{title:'Meet Our Team', subtitle:'The dedicated professionals behind our success.'},
+        compare:{title:'Compare Properties', subtitle:'View a side-by-side comparison of your selected properties.',
+          selectPrompt:'Select up to 4 properties to compare.', compareNow:'Compare Now', clearAll:'Clear All', maxItems:'You can compare a maximum of 4 properties.', feature:'Feature'},
+        footer:{rights:'All rights reserved.', quickLinks:'Quick Links'}
+      },
+      te:{
+        nav:{home:'హోమ్', projects:'ప్రాజెక్ట్‌లు', about:'మా గురించి', team:'మా బృందం', blog:'బ్లాగ్', contact:'కాంటాక్ట్'},
+        hero:{title:'మీ భవిష్యత్తును కనుగొనండి. మీ సంపదను నిర్మించుకోండి.', subtitle:'ఆంధ్రప్రదేశ్‌లో ప్రీమియం ప్లాట్లు, అపార్ట్‌మెంట్లు మరియు రియల్ ఎస్టేట్ పెట్టుబడి అవకాశాలను కనుగొనండి.', button:'ప్రాజెక్ట్‌లను అన్వేషించండి'},
+        featured:'ఫీచర్డ్ ప్రాజెక్ట్‌లు', allProjects:'అన్ని ప్రాజెక్ట్‌లు',
+        projectDetails:'ప్రాజెక్ట్ వివరాలు', amenities:'సౌకర్యాలు & ప్రయోజనాలు', location:'ప్రదేశం', nearby:'సమీపంలోని ప్రదేశాలు',
+        price:'ధర', area:'విస్తీర్ణం', facing:'ఫేసింగ్', status:'స్థితి', negotiable:'చర్చించదగినది', notNegotiable:'చర్చించబడదు',
+        contactForm:{ title:'ఆసక్తి ఉందా? మమ్మల్ని సంప్రదించండి', subtitle:'మరిన్ని వివరాల కోసం ఫారం పూరించండి లేదా WhatsAppలో మాకు సందేశం పంపండి.',
+          name:'పేరు', namePlaceholder:'మీ పేరు నమోదు చేయండి', phone:'ఫోన్ నంబర్', phonePlaceholder:'10 అంకెల నంబరు నమోదు చేయండి',
+          submit:'విచారణ పంపండి', whatsapp:'WhatsAppలో చాట్ చేయండి', submitting:'సమర్పిస్తోంది...', submitted:'ధన్యవాదాలు! మేము త్వరలో మిమ్మల్ని సంప్రదిస్తాము.',
+          error:'దయచేసి అన్ని వివరాలను సరిగ్గా పూరించండి.', phoneError:'దయచేసి సరైన 10 అంకెల ఫోన్ నంబర్ నమోదు చేయండి.'},
+        blog:{title:'రియల్ ఎస్టేట్ అంతర్దృష్టులు', subtitle:'ఆస్తి మార్కెట్ నుండి తాజా పోకడలు మరియు వార్తలతో నవీకరించబడండి.', readMore:'ఇంకా చదవండి'},
+        contactPage:{title:'సంప్రదించండి', subtitle:'మీ ఆస్తి అవసరాల కోసం మేము ఇక్కడ ఉన్నాము. క్రింది ఫారం లేదా సంప్రదింపు వివరాల ద్వారా మమ్మల్ని సంప్రదించండి.',
+          phone:'ఫోన్', email:'ఇమెయిల్', address:'చిరునామా', hours:'పని గంటలు', hoursValue:'ఉదయం 10 - సాయంత్రం 6'},
+        about:{title:'ఎస్టేట్ మిత్రా గురించి', subtitle:'రియల్ ఎస్టేట్‌లో మీ నమ్మకమైన భాగస్వామి, మీకు శ్రేయస్సు వైపు మార్గనిర్దేశం చేస్తుంది.',
+          section1Title:'మా లక్ష్యం',
+          section1Text:'ప్రతిఒక్కరికీ పారదర్శక, అధిక‑రాబడి అవకాశాలను అందించడం ద్వారా రియల్ ఎస్టేట్ పెట్టుబడిని ప్రజాస్వామ్యం చేయడం.',
+          section2Title:'మా దృష్టి',
+          section2Text:'భారతదేశంలో అత్యంత విశ్వసనీయ రియల్ ఎస్టేట్ సంపద సృష్టి వేదికగా మారడం.'},
+        team:{title:'మా బృందాన్ని కలవండి', subtitle:'మా విజయం వెనుక అంకితభావంతో ఉన్న నిపుణులు.'},
+        compare:{title:'ఆస్తులను సరిపోల్చండి', subtitle:'ఎంచుకున్న ఆస్తుల పక్కపక్క పోలికను చూడండి.',
+          selectPrompt:'గరిష్టంగా 4 ఆస్తులను ఎంచుకోండి.', compareNow:'ఇప్పుడు సరిపోల్చండి', clearAll:'అన్నీ క్లియర్ చేయండి', maxItems:'గరిష్టంగా 4 ఆస్తులు.', feature:'ఫీచర్'},
+        footer:{rights:'అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.', quickLinks:'త్వరిత లింకులు'}
+      }
+    };
+
+    const t = (key) => {
+      const dict = tdict[state.lang];
+      return key.split('.').reduce((a,c)=> (a && a[c]) ? a[c] : key, dict);
+    };
+
+    // --- UTIL ---
+    const setLanguage = (lang) => {
+      state.lang = lang;
+      document.getElementById('lang-en').classList.toggle('active', lang==='en');
+      document.getElementById('lang-te').classList.toggle('active', lang==='te');
+      document.querySelectorAll('[data-i18n-key]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-key');
+        el.textContent = t(key);
+      });
+      renderFooter();
+      router(true);
+    };
+
+    const updateStructuredData = (type, data) => {
+      let schema = {};
+      if(type==='Organization'){
+        schema = {"@context":"https://schema.org","@type":"Organization","name":"Estate Mitra","url":"https://estatemitra.com/","logo":"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='12' ry='12' width='64' height='64' fill='%232256dd'/></svg>"};
+      }else if(type==='LocalBusiness'){
+        schema = {"@context":"https://schema.org","@type":"RealEstateAgent","name":"Estate Mitra","url":"https://estatemitra.com/","telephone":WHATSAPP_NUMBER,"address":{"@type":"PostalAddress","streetAddress":"301 A, GOD Apartments, HB Colony","addressLocality":"Visakhapatnam","addressRegion":"AP","postalCode":"530022","addressCountry":"IN"},"openingHours":"Mo-Sa 10:00-18:00"};
+      }else if(type==='RealEstateListing' && data){
+        schema = {"@context":"https://schema.org","@type":"RealEstateListing","name":data.name.en,"url":"https://estatemitra.com/#/projects/"+data.id,"image":[],"description":data.description.en};
+      }
+      dom.structuredData.textContent = JSON.stringify(schema);
+    };
+
+    // --- RENDER (imageless) ---
+    const amenityBadge = (a)=> `<span class="chip amenity">${a.icon}<span>${' '}${a.name[state.lang]}</span></span>`;
+
+    const createCard = (p) => {
+      const isInCompare = state.comparisonList.includes(p.id);
+      const am = p.amenities.slice(0,3).map(amenityBadge).join('');
+      return `
+        <div class="project-card soft">
+          <div class="tile">
+            <div class="project-meta"><span class="badge">${p.type[state.lang]}</span></div>
+            <h3>${p.name[state.lang]}</h3>
+            <div class="project-meta">${p.location[state.lang]}</div>
+            <div class="project-meta" style="margin-top:.3rem"><strong>${t('price')}:</strong>&nbsp;${p.details.price[state.lang]}</div>
+            <div class="amenity-row" aria-label="Amenities">${am}</div>
+            <div style="display:flex; gap:.5rem; margin-top:.75rem">
+              <a class="btn btn-primary" href="#/projects/${p.id}">View</a>
+              <button class="btn" data-compare="${p.id}" style="border:1px solid var(--border)">${isInCompare?'✓ In Compare':'＋ Compare'}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    const renderHome = () => {
+      const featured = projects.filter(p=>p.isFeatured);
+      dom.featured.innerHTML = featured.map(createCard).join('');
+      addCompareListeners(dom.featured);
+    };
+
+    const renderProjects = () => {
+      const types = ['All', ...Array.from(new Set(projects.map(p=>p.type.en)))];
+      dom.projectFilters.innerHTML = types.map(ti=>{
+        const label = ti==='All' ? t('allProjects') : (projects.find(p=>p.type.en===ti).type[state.lang]);
+        return `<button data-f="${ti}">${label}</button>`;
+      }).join('');
+      const setFilter = (f='All')=>{
+        dom.projectFilters.querySelectorAll('button').forEach(b=> b.classList.toggle('active', b.dataset.f===f));
+        const list = f==='All'? projects : projects.filter(p=>p.type.en===f);
+        dom.allProjectsGrid.innerHTML = list.map(createCard).join('');
+        addCompareListeners(dom.allProjectsGrid);
+      };
+      dom.projectFilters.addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON') setFilter(e.target.dataset.f); });
+      setFilter();
+    };
+
+    const renderDetail = (id) => {
+      const p = projects.find(x=>x.id===id);
+      if(!p){ router(); return; }
+      const items = [
+        {label:t('price'), value:p.details.price[state.lang]},
+        {label:t('area'), value: (p.details.propertyArea?.[state.lang]||'') + (p.details.projectArea? ' ('+p.details.projectArea[state.lang]+')':'' )},
+        {label:t('facing'), value:p.details.facing[state.lang]},
+        {label:t('status'), value: p.details.negotiable? t('negotiable'): t('notNegotiable')}
+      ];
+      const am = p.amenities.map(amenityBadge).join('');
+      dom.projectDetail.innerHTML = `
+        <div class="container section">
+          <div class="detail-grid">
+            <div>
+              <div class="detail-card soft">
+                <div class="detail-title">
+                  <h1 style="font-size:1.6rem">${p.name[state.lang]}</h1>
+                  <button class="btn" data-compare="${p.id}" style="border:1px solid var(--border)">${state.comparisonList.includes(p.id)?'✓ In Compare':'＋ Compare'}</button>
+                </div>
+                <div class="project-meta" style="margin-top:.25rem">${p.location[state.lang]}</div>
+                <p style="margin-top:.6rem">${p.description[state.lang]}</p>
+              </div>
+
+              ${p.amenities.length? `
+              <div class="detail-card soft" style="margin-top:1rem">
+                <h2 style="font-size:1.15rem" data-i18n-key="amenities">${t('amenities')}</h2>
+                <div class="amenity-row" style="margin-top:.6rem">${am}</div>
+              </div>`:''}
+
+              <div class="detail-card soft" style="margin-top:1rem">
+                <h2 style="font-size:1.15rem" data-i18n-key="location">${t('location')}</h2>
+                <div style="margin-top:.5rem">
+                  <h3 style="font-size:1rem" data-i18n-key="nearby">${t('nearby')}</h3>
+                  <ul class="nearby-list" style="margin-top:.4rem">
+                    ${p.nearbyLocations.map(n=> `<li>• ${n[state.lang]}</li>`).join('')}
+                  </ul>
+                  <p class="page-subtitle" style="text-align:left; margin-top:.6rem">Map preview omitted in offline demo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="detail-card soft">
+                <h2 style="font-size:1.15rem" data-i18n-key="projectDetails">${t('projectDetails')}</h2>
+                <div class="detail-list">
+                  ${items.map(it=> `<div class="detail-item"><span class="label">${it.label}</span><span class="value">${it.value}</span></div>`).join('')}
+                </div>
+              </div>
+              <div id="detail-form" class="detail-card soft form" style="margin-top:1rem"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      createContactForm(p.name.en, document.getElementById('detail-form'));
+      addCompareListeners(dom.projectDetail);
+    };
+
+    const renderTeam = () => {
+      dom.teamGrid.innerHTML = teamMembers.map(m => `
+        <div class="soft" style="padding:1rem">
+          <h3 style="margin:0 0 .25rem">${m.name}</h3>
+          <p class="page-subtitle" style="text-align:left">${m.role[state.lang]}</p>
+        </div>
+      `).join('');
+    };
+
+    const renderBlog = () => {
+      dom.blogList.innerHTML = blogs.map(b => `
+        <div class="soft blog-card">
+          <p class="page-subtitle" style="text-align:left">${b.date}</p>
+          <h3 style="margin:.15rem 0 .35rem">${b.title[state.lang]}</h3>
+          <p class="page-subtitle" style="text-align:left">${b.summary[state.lang]}</p>
+          <a href="#" class="btn" style="border:1px solid var(--border); margin-top:.6rem">${t('blog.readMore')} →</a>
+        </div>
+      `).join('');
+    };
+
+    const createContactForm = (projectName, mount) => {
+      const T = tdict[state.lang].contactForm;
+      const id = 'lead-'+projectName.replace(/\s+/g,'-');
+      mount.innerHTML = `
+        <h3>${T.title}</h3>
+        <p class="sub">${T.subtitle}</p>
+        <form id="${id}">
+          <div class="row">
+            <label for="n-${id}">${T.name}</label>
+            <input id="n-${id}" name="name" type="text" placeholder="${T.namePlaceholder}" required />
+          </div>
+          <div class="row">
+            <label for="p-${id}">${T.phone}</label>
+            <input id="p-${id}" name="phone" type="tel" placeholder="${T.phonePlaceholder}" required pattern="\\d{10}" />
+          </div>
+          <div id="e-${id}" class="err"></div>
+          <button type="submit" class="btn btn-primary full">${T.submit}</button>
+        </form>
+        <div class="divider">OR</div>
+        <a class="btn full" style="border:1px solid var(--border)" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi, I am interested in: '+projectName)}" target="_blank" rel="noopener">${T.whatsapp}</a>
+      `;
+      const form = document.getElementById(id);
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = form.querySelector('[name="name"]').value.trim();
+        const phone = form.querySelector('[name="phone"]').value.trim();
+        const err = document.getElementById('e-'+id);
+        err.textContent = '';
+        if(!name || !/^\d{10}$/.test(phone)){ err.textContent = !name || !phone ? T.error : T.phoneError; return; }
+        const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = T.submitting;
+        setTimeout(()=>{ mount.innerHTML = `<div class="soft" style="padding:1rem; border-left:4px solid #16a34a; background: color-mix(in srgb, #16a34a 10%, transparent)"> ${T.submitted} </div>`; }, 700);
+      });
+    };
+
+    const renderContactPage = () => {
+      dom.contactFormSlot.innerHTML = '';
+      createContactForm('General Inquiry', dom.contactFormSlot);
+    };
+
+    const renderFooter = () => {
+      dom.footerProjects.innerHTML = projects.slice(0,4).map(p=> `<li><a href="#/projects/${p.id}">${p.name[state.lang]}</a></li>`).join('');
+      dom.footerPhone.textContent = WHATSAPP_NUMBER;
+    };
+
+    // --- Compare ---
+    const addCompareListeners = (root) => {
+      root.querySelectorAll('[data-compare]').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          const id = e.currentTarget.getAttribute('data-compare');
+          toggleCompare(id);
+        });
+      });
+    };
+    const toggleCompare = (id) => {
+      const idx = state.comparisonList.indexOf(id);
+      if(idx>-1) state.comparisonList.splice(idx,1);
+      else{
+        if(state.comparisonList.length>=4){ alert(t('compare.maxItems')); return; }
+        state.comparisonList.push(id);
+      }
+      localStorage.setItem('comparisonList', JSON.stringify(state.comparisonList));
+      renderCompareBar();
+      router(true);
+    };
+    const clearCompare = () => {
+      state.comparisonList = [];
+      localStorage.removeItem('comparisonList');
+      renderCompareBar();
+      router(true);
+    };
+    const renderCompareBar = () => {
+      if(state.comparisonList.length===0){ dom.compareBar.classList.remove('show'); dom.compareBar.innerHTML=''; return; }
+      const items = state.comparisonList.map(id=>{
+        const p = projects.find(x=>x.id===id);
+        const initials = p.name.en.split(' ').map(s=>s[0]).slice(0,2).join('');
+        return `<div class="pill" title="${p.name.en}">${initials}</div>`;
+      }).join('');
+      dom.compareBar.innerHTML = `
+        <div class="compare-items">${items}</div>
+        <div class="compare-cta">
+          <a class="btn btn-primary" href="#/compare">${t('compare.compareNow')} (${state.comparisonList.length})</a>
+          <button class="btn-clear" id="cmp-clear">${t('compare.clearAll')}</button>
+        </div>
+      `;
+      dom.compareBar.classList.add('show');
+      dom.compareBar.querySelector('#cmp-clear').addEventListener('click', clearCompare);
+    };
+    const renderComparePage = () => {
+      if(state.comparisonList.length===0){ dom.compareContent.innerHTML = `<p class="page-subtitle" style="text-align:center">${t('compare.selectPrompt')}</p>`; return; }
+      const list = state.comparisonList.map(id=> projects.find(p=>p.id===id));
+      const features = ['price','propertyArea','projectArea','facing','negotiable'];
+      const head = list.map(p=> `<th style="min-width:220px; font-weight:800">${p.name[state.lang]}<div class="page-subtitle" style="text-align:left">${p.location[state.lang]}</div></th>`).join('');
+      const rows = features.map(f=>{
+        const label = (f==='propertyArea'? t('area') : f==='negotiable' ? t('status') : t(f));
+        const cells = list.map(p=>{
+          if(f==='negotiable') return `<td>${p.details.negotiable? t('negotiable'): t('notNegotiable')}</td>`;
+          const v = p.details[f]; return `<td>${v? (v[state.lang]||v) : '—'}</td>`;
+        }).join('');
+        return `<tr><td><strong>${label}</strong></td>${cells}</tr>`;
+      }).join('');
+      dom.compareContent.innerHTML = `
+        <div class="soft" style="overflow:auto">
+          <table class="compare-table" style="min-width:720px; width:100%">
+            <thead><tr><th>${t('compare.feature')}</th>${head}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      `;
+    };
+
+    // --- ROUTER ---
+    const router = (update=false) => {
+      if(!update) window.scrollTo(0,0);
+      const path = window.location.hash || '#/';
+      Object.values(dom.pages).forEach(p=>p.classList.add('hidden'));
+      document.body.classList.remove('menu-open');
+      let title = 'Estate Mitra';
+
+      if(path==='#/'){
+        dom.pages.home.classList.remove('hidden'); renderHome(); updateStructuredData('Organization'); title = 'Home | Estate Mitra';
+      } else if(path==='#/projects'){
+        dom.pages.projects.classList.remove('hidden'); renderProjects(); title = 'Projects | Estate Mitra';
+      } else if(path.startsWith('#/projects/')){
+        const id = path.split('/')[2]; const p = projects.find(x=>x.id===id);
+        if(p){ dom.pages.projectDetail.classList.remove('hidden'); renderDetail(id); updateStructuredData('RealEstateListing', p); title = p.name.en + ' | Estate Mitra'; }
+        else { dom.pages.notFound.classList.remove('hidden'); title='404 | Estate Mitra'; }
+      } else if(path==='#/about'){
+        dom.pages.about.classList.remove('hidden'); title='About | Estate Mitra';
+      } else if(path==='#/team'){
+        dom.pages.team.classList.remove('hidden'); renderTeam(); title='Team | Estate Mitra';
+      } else if(path==='#/blog'){
+        dom.pages.blog.classList.remove('hidden'); renderBlog(); title='Blog | Estate Mitra';
+      } else if(path==='#/contact'){
+        dom.pages.contact.classList.remove('hidden'); renderContactPage(); updateStructuredData('LocalBusiness'); title='Contact | Estate Mitra';
+      } else if(path==='#/compare'){
+        dom.pages.compare.classList.remove('hidden'); renderComparePage(); title='Compare | Estate Mitra';
+      } else {
+        dom.pages.notFound.classList.remove('hidden'); title='404 | Estate Mitra';
+      }
+      document.title = title;
+
+      // Active link highlight
+      const seg = (path.split('/')[1]||'');
+      dom.navLinks.forEach(a=>{
+        const s = (a.getAttribute('href').split('/')[1]||'');
+        a.classList.toggle('active', s===seg);
+      });
+    };
+
+    // --- INIT ---
+    dom.year.textContent = new Date().getFullYear();
+    dom.footerPhone.textContent = WHATSAPP_NUMBER;
+    renderCompareBar();
+    router();
+
+    // events
+    window.addEventListener('hashchange', ()=> router());
+    document.querySelector('.main-nav')?.addEventListener('click',(e)=>{ if(e.target.classList.contains('nav-link')) document.body.classList.remove('menu-open'); });
+    dom.mobileMenu.addEventListener('click',(e)=>{ if(e.target.classList.contains('nav-link')) document.body.classList.remove('menu-open'); });
+    dom.mobileMenuToggle.addEventListener('click', ()=>{
+      document.body.classList.toggle('menu-open');
+      const open = document.body.classList.contains('menu-open');
+      dom.mobileMenuToggle.querySelector('.menu-open-icon').style.display = open? 'none':'block';
+      dom.mobileMenuToggle.querySelector('.menu-close-icon').style.display = open? 'block':'none';
+    });
+    dom.langEnBtn.addEventListener('click', ()=> setLanguage('en'));
+    dom.langTeBtn.addEventListener('click', ()=> setLanguage('te'));
+    setLanguage(state.lang);
+  });
+  </script>
+</body>
+</html>
