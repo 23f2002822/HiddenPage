@@ -188,8 +188,36 @@
     .foot a:hover{color:var(--primary-500)}
     .bar{margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border); text-align:center; color:var(--muted-fg); font-size:.9rem}
   </style>
+  <style>
+  /* 🔒 Lock screen styles */
+  #lockscreen {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background:#f6f8fa;
+    display:flex; justify-content:center; align-items:center;
+    z-index: 99999;
+  }
+  #lockscreen input {
+    padding:10px; font-size:16px;
+  }
+  #lockscreen button {
+    padding:10px 15px; margin-left:5px; cursor:pointer;
+    background:#2256dd; color:white; border:none; border-radius:6px;
+  }
+</style>
+
 </head>
 <body>
+  <!-- 🔒 Lock Screen -->
+<div id="lockscreen">
+  <div style="text-align:center;">
+    <h2>🔑 Enter Password</h2>
+    <input type="password" id="pw" placeholder="Password">
+    <button onclick="unlock()">Unlock</button>
+    <p id="msg" style="color:red; margin-top:10px;"></p>
+  </div>
+</div>
+
 
   <!-- Header -->
   <header class="site-header">
@@ -1166,8 +1194,23 @@
     setLanguage(state.lang);
   });
   </script>
+  <!-- 🔒 Lock Screen Script -->
+<script>
+  const correctPassword = "Webdev@123"; // change to your password
+
+  function unlock() {
+    const input = document.getElementById("pw").value;
+    if (input === correctPassword) {
+      document.getElementById("lockscreen").style.display = "none";
+    } else {
+      document.getElementById("msg").innerText = "❌ Incorrect password";
+    }
+  }
+</script>
+
 </body>
 </html>
+
 
 
 
